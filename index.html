@@ -65,6 +65,41 @@
             background-color: #00bfa6;
             transform: scale(1.1);
         }
+
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1e1e1e;
+            border: 2px solid #00ffcc;
+            border-radius: 10px;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            z-index: 100;
+            text-align: left;
+        }
+
+        .message-box h2 {
+            margin-top: 0;
+            color: #00ffcc;
+        }
+
+        .close-btn {
+            margin-top: 20px;
+            background-color: #00ffcc;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: #00bfa6;
+        }
     </style>
 </head>
 <body>
@@ -72,9 +107,36 @@
     <div class="container">
         <h1>RoeakCheats Trial</h1>
         <p>Ücretsiz deneme sürümünü hemen indir ve farkı yaşa!</p>
-        <a href="roeakcheats-trial.zip" download>
+        <a href="relase.zip" download onclick="showMessageBox()">
             <button class="btn-download">İndir</button>
         </a>
     </div>
+
+    <div class="message-box" id="instructionBox">
+        <h2>Kurulum Talimatları</h2>
+        <p>İndirme tamamlandıktan sonra:</p>
+        <ul>
+            <li><strong>release.zip</strong> dosyasını masaüstüne çıkartın.</li>
+            <li>İçindeki <strong>release</strong> klasörünü masaüstüne taşıyın.</li>
+            <li>Release klasörünün içindeki injectoru çalıştırın.</li>
+            <li>Craftrise oyununu başlatın.</li>
+            <li>Lobiye girdikten sonra <strong>F1</strong> tuşuna basın.</li>
+            <li>Injector otomatik olarak oyuna entegre olacaktır.</li>
+            <li><strong>Dikkat:</strong> Hiçbir klasör adını, .exe veya .dll adını değiştirmeyin, aksi halde çalışmaz!</li>
+        </ul>
+        <button class="close-btn" onclick="hideMessageBox()">Tamam</button>
+    </div>
+
+    <script>
+        function showMessageBox() {
+            setTimeout(() => {
+                document.getElementById('instructionBox').style.display = 'block';
+            }, 1000);
+        }
+
+        function hideMessageBox() {
+            document.getElementById('instructionBox').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
