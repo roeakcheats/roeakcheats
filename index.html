@@ -1,180 +1,1064 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoeakCheats Trial İndir</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+    <title>Product Landing Page</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            cursor: none; /* Hide default cursor */
+        }
+        
+        body {
+            background-color: #0f0f1a;
+            color: #ffffff;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a3a 100%);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+        
+        /* Custom Cursor */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #4da6ff;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s;
+        }
+        
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(77, 166, 255, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, border-color 0.3s, transform 0.3s;
+        }
+        
+        /* Mouse trail effect */
+        .mouse-trail {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            background: rgba(77, 166, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9997;
+            transform: translate(-50%, -50%);
+            opacity: 0.8;
+            transition: opacity 1s;
+        }
+        
+        /* Interactive elements cursor effect */
+        a, button, .interactive {
+            cursor: none;
+        }
+        
+        a:hover ~ .cursor-outline, 
+        button:hover ~ .cursor-outline,
+        .interactive:hover ~ .cursor-outline {
+            width: 60px;
+            height: 60px;
+            border-color: rgba(166, 77, 255, 0.5);
+            mix-blend-mode: difference;
+        }
+        
+        /* Horizontal Navbar */
+        .horizontal-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #4da6ff, #a64dff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(45deg, #4da6ff, #a64dff);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #4da6ff;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Top Sidebar */
+        .top-sidebar {
+            width: 100%;
+            background-color: rgba(22, 22, 42, 0.8);
+            backdrop-filter: blur(8px);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
             overflow: hidden;
         }
-
-        .background {
-            position: fixed;
+        
+        .top-sidebar::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(77, 166, 255, 0.1), transparent);
+            left: -100px;
+            top: 0;
+            animation: sweep 5s infinite;
+        }
+        
+        @keyframes sweep {
+            0% { left: -100px; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        .sidebar-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #cccccc;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 15px;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .sidebar-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: #4da6ff;
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+        
+        .sidebar-link:hover {
+            color: #ffffff;
+        }
+        
+        .sidebar-link:hover::after {
+            width: 100%;
+        }
+        
+        .buy-now-top {
+            padding: 10px 25px;
+            font-size: 15px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #4d79ff, #4da6ff);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(77, 166, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .buy-now-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(270deg, #0f0f0f, #1a1a1a, #0f0f0f);
-            background-size: 600% 600%;
-            animation: gradientAnimation 15s ease infinite;
-            z-index: -1;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s;
         }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        
+        .buy-now-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(77, 166, 255, 0.5);
         }
-
+        
+        .buy-now-top:hover::before {
+            animation: shimmer 1.5s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Main Container */
         .container {
+            min-height: calc(100vh - 120px);
+            padding: 60px 40px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
+            justify-content: center;
             text-align: center;
-            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
         }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        
+        .container::before, .container::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(77, 166, 255, 0.2) 0%, transparent 70%);
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
         }
-
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+        
+        .container::before {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
         }
-
-        .btn-download {
-            background-color: #00ffcc;
-            color: #000;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            margin: 10px;
+        
+        .container::after {
+            bottom: 5%;
+            right: 10%;
+            animation-delay: -5s;
+            background: radial-gradient(circle, rgba(166, 77, 255, 0.2) 0%, transparent 70%);
         }
-
-        .btn-download:hover {
-            background-color: #00bfa6;
-            transform: scale(1.1);
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, 50px) rotate(90deg); }
+            50% { transform: translate(0, 100px) rotate(180deg); }
+            75% { transform: translate(-50px, 50px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
         }
-
-        .message-box {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #1e1e1e;
-            border: 2px solid #00ffcc;
-            border-radius: 10px;
-            padding: 20px;
-            width: 80%;
-            max-width: 600px;
-            z-index: 100;
-            text-align: left;
-        }
-
-        .message-box h2 {
-            margin-top: 0;
-            color: #00ffcc;
-        }
-
-        .close-btn {
-            margin-top: 20px;
-            background-color: #00ffcc;
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .close-btn:hover {
-            background-color: #00bfa6;
-        }
-
-        .announcement {
-            background-color: #222;
-            padding: 10px 20px;
-            border-radius: 10px;
-            border: 2px solid #00ffcc;
+        
+        .product-title {
+            font-size: 52px;
             margin-bottom: 20px;
-            max-width: 600px;
+            background: linear-gradient(45deg, #4da6ff, #a64dff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: colorShift 8s infinite;
+            text-shadow: 0 5px 25px rgba(166, 77, 255, 0.3);
         }
-
-        .announcement h2 {
-            margin: 0 0 10px 0;
-            color: #00ffcc;
+        
+        @keyframes colorShift {
+            0% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(40deg); }
+            100% { filter: hue-rotate(0deg); }
         }
-
-.screenshot {
-    width: 420px;
-    height: auto;
-    border: 2px solid #00ffcc;
-    border-radius: 12px;
-    margin: 20px 0;
-    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
-}
-
-
+        
+        .product-description {
+            font-size: 18px;
+            max-width: 800px;
+            margin-bottom: 40px;
+            color: #cccccc;
+            line-height: 1.6;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        .buy-button {
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #4d79ff, #4da6ff);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(77, 166, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .buy-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s;
+        }
+        
+        .buy-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(77, 166, 255, 0.5);
+        }
+        
+        .buy-button:hover::before {
+            animation: shimmer 1.5s infinite;
+        }
+        
+        .free-trial-button {
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            background: transparent;
+            border: 2px solid #a64dff;
+            border-radius: 8px;
+            color: white;
+            cursor: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s;
+        }
+        
+        .free-trial-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #a64dff, #4da6ff);
+            transition: all 0.6s;
+            z-index: -1;
+        }
+        
+        .free-trial-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(166, 77, 255, 0.4) 0%, transparent 50%);
+            transition: all 0.6s;
+            z-index: -2;
+            opacity: 0;
+        }
+        
+        .free-trial-button:hover::before {
+            left: 0;
+        }
+        
+        .free-trial-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(166, 77, 255, 0.3);
+        }
+        
+        .free-trial-button:hover::after {
+            opacity: 1;
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1); }
+            100% { transform: scale(0.8); }
+        }
+        
+        .download-button {
+            margin-top: 30px;
+            padding: 12px 30px;
+            font-size: 16px;
+            background: rgba(37, 37, 66, 0.6);
+            border: none;
+            border-radius: 8px;
+            color: #cccccc;
+            cursor: none;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 2s ease-in;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .download-button::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 150px;
+            top: 0;
+            left: -200px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        .download-button:hover {
+            background: rgba(37, 37, 66, 0.9);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .download-button i {
+            font-size: 18px;
+        }
+        
+        @keyframes shine {
+            0% { left: -200px; }
+            40% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Download Progress Bar */
+        .download-progress-container {
+            width: 300px;
+            height: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-top: 15px;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .download-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #4da6ff, #a64dff);
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+        
+        .download-status {
+            font-size: 14px;
+            color: #cccccc;
+            margin-top: 8px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        /* Mouse-activated Effects */
+        .interactive-area {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .mouse-particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(77, 166, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            transition: transform 0.3s, opacity 1s;
+        }
+        
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(77, 166, 255, 0.5) 0%, transparent 70%);
+            z-index: -1;
+            animation: float-random 20s infinite ease-in-out;
+            opacity: 0.5;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            width: 60px;
+            height: 60px;
+            animation-duration: 15s;
+            background: radial-gradient(circle, rgba(166, 77, 255, 0.5) 0%, transparent 70%);
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            width: 80px;
+            height: 80px;
+            animation-delay: -5s;
+        }
+        
+        .floating-element:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            width: 50px;
+            height: 50px;
+            animation-delay: -10s;
+            background: radial-gradient(circle, rgba(77, 255, 195, 0.5) 0%, transparent 70%);
+        }
+        
+        @keyframes float-random {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, 40px) rotate(90deg); }
+            50% { transform: translate(10px, 80px) rotate(180deg); }
+            75% { transform: translate(-40px, 30px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #4da6ff, #a64dff, transparent);
+            animation: glow 3s infinite;
+        }
+        
+        .footer::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #a64dff, #4da6ff, transparent);
+            animation: glow 3s infinite reverse;
+            animation-delay: -1.5s;
+        }
+        
+        @keyframes glow {
+            0% { opacity: 0.3; background-position: -500px 0; }
+            50% { opacity: 1; background-position: 500px 0; }
+            100% { opacity: 0.3; background-position: 500px 0; }
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 50%;
+            background: linear-gradient(90deg, #4da6ff, #a64dff);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+        
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+        
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+        
+        .copyright {
+            color: #888888;
+            font-size: 14px;
+            animation: pulse 3s infinite;
+        }
+        
+        /* Download Animation */
+        .download-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+        
+        .download-animation.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .download-animation-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        .download-icon {
+            font-size: 50px;
+            color: #4da6ff;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        .download-text {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #4da6ff, #a64dff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .download-progress-animation {
+            width: 300px;
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .download-progress-bar-animation {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #4da6ff, #a64dff);
+            border-radius: 10px;
+            transition: width 0.5s;
+            animation: progressGlow 1.5s infinite;
+        }
+        
+        @keyframes progressGlow {
+            0% { box-shadow: 0 0 10px rgba(77, 166, 255, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(166, 77, 255, 0.7); }
+            100% { box-shadow: 0 0 10px rgba(77, 166, 255, 0.5); }
+        }
+        
+        .download-status-text {
+            font-size: 14px;
+            color: #cccccc;
+        }
     </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="background"></div>
-    <div class="container">
-        <div class="announcement">
-            <h2>Duyuru</h2>
-            <p>Yeni RoeakInjector yayınlandı! Aşağıdaki butonu kullanarak hemen indirebilirsin.</p>
+    <!-- Custom Cursor Elements -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    
+    <!-- Mouse Interaction Area -->
+    <div class="interactive-area"></div>
+    
+    <!-- Download Animation -->
+    <div class="download-animation">
+        <div class="download-animation-content">
+            <i class="fas fa-download download-icon"></i>
+            <div class="download-text">Preparing Your Download</div>
+            <div class="download-progress-animation">
+                <div class="download-progress-bar-animation"></div>
+            </div>
+            <div class="download-status-text">Starting download...</div>
         </div>
-
-        <!-- Görsel buraya eklendi -->
-        <img src="https://github.com/roeakcheats/roeakcheats/blob/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-04-10%20094545.jpg?raw=true" alt="RoeakCheats Ekran Görüntüsü" class="screenshot" />
-
-        <h1>RoeakCheats Trial</h1>
-        <p>Ücretsiz deneme sürümünü hemen indir ve farkı yaşa!</p>
-
-        <a href="https://upnow-prod.ff45e40d1a1c8f7e7de4e976d0c9e555.r2.cloudflarestorage.com/raKKZPRTv5RYa9gfrmh9MDKDs1z2/4ad2f42d-5998-48f3-90dd-e9ef35a0bf22?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=cdd12e35bbd220303957dc5603a4cc8e%2F20250410%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250410T062916Z&X-Amz-Expires=43200&X-Amz-Signature=7d2f550d9bd098f81dbd1ea6c40331f322d69969c68bf17b0cffffd43f31fc5d&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22Relase.rar%22" download onclick="showMessageBox()">
-            <button class="btn-download">Trial Sürüm İndir</button>
-        </a>
-
-        <a href="https://upnow-prod.ff45e40d1a1c8f7e7de4e976d0c9e555.r2.cloudflarestorage.com/raKKZPRTv5RYa9gfrmh9MDKDs1z2/60a4a5be-c81a-4e61-864a-3b1d1638417d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=cdd12e35bbd220303957dc5603a4cc8e%2F20250410%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250410T064118Z&X-Amz-Expires=43200&X-Amz-Signature=c4e7f82cb5f20b64ff58a878db5bf1069630893cdac68cc0f6e8f357281e0dee&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22RoeakInjector1.exe%22" download>
-            <button class="btn-download">Yeni Injector İndir</button>
-        </a>
     </div>
-
-    <div class="message-box" id="instructionBox">
-        <h2>Kurulum Talimatları</h2>
-        <p>İndirme tamamlandıktan sonra:</p>
-        <ul>
-            <li><strong>release.zip</strong> dosyasını masaüstüne çıkartın.</li>
-            <li>İçindeki <strong>release</strong> klasörünü masaüstüne taşıyın.</li>
-            <li>Release klasörünün içindeki injectoru çalıştırın.</li>
-            <li>Craftrise oyununu başlatın.</li>
-            <li>Lobiye girdikten sonra <strong>F1</strong> tuşuna basın.</li>
-            <li>Injector otomatik olarak oyuna entegre olacaktır.</li>
-            <li><strong>Dikkat:</strong> Hiçbir klasör adını, .exe veya .dll adını değiştirmeyin, aksi halde çalışmaz!</li>
-        </ul>
-        <button class="close-btn" onclick="hideMessageBox()">Tamam</button>
+    
+    <!-- Horizontal Navbar -->
+    <div class="horizontal-navbar">
+        <div class="logo interactive">RoeakCheats</div>
+        <div class="nav-links">
+            <a href="#" class="interactive">Home</a>
+            <a href="#" class="interactive">Features</a>
+            <a href="#" class="interactive">Pricing</a>
+            <a href="#" class="interactive">Support</a>
+        </div>
+    </div>
+    
+    <!-- Top Sidebar -->
+    <div class="top-sidebar">
+        <div class="sidebar-links">
+            <a href="#" class="sidebar-link interactive">Dashboard</a>
+            <a href="#" class="sidebar-link interactive">Products</a>
+            <a href="#" class="sidebar-link interactive">Documentation</a>
+            <a href="#" class="sidebar-link interactive">Tutorials</a>
+            <a href="#" class="sidebar-link interactive">Community</a>
+        </div>
+        <button class="buy-now-top interactive" onclick="window.location.href='https://discord.gg/sD5m9wfbJA'">
+            Buy Now
+        </button>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Floating Background Elements -->
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        
+        <h1 class="product-title interactive">Premium Software Solution</h1>
+        <p class="product-description">
+            Experience the ultimate performance with our advanced software solution.
+            Designed for professionals who demand the best, our product offers
+            unmatched features and reliability.
+        </p>
+        
+        <div class="button-container">
+            <button class="buy-button interactive" onclick="window.location.href='https://discord.com/invite/yourserver'">
+                Buy Now
+            </button>
+            
+            <button class="free-trial-button interactive" id="free-trial-btn">
+                Free Trial
+            </button>
+        </div>
+        
+        <button class="download-button interactive" id="download-btn">
+            <i class="fas fa-download"></i>
+            Download Latest Version
+        </button>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#" class="interactive">About Us</a>
+                <a href="#" class="interactive">Privacy Policy</a>
+                <a href="#" class="interactive">Terms of Service</a>
+                <a href="#" class="interactive">Contact</a>
+            </div>
+            <div class="copyright">
+                © 2025 RoeakWare. All rights reserved.
+            </div>
+        </div>
     </div>
 
     <script>
-        function showMessageBox() {
+        // Custom cursor functionality
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            // Position the dot cursor
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            
+            // Position the outline cursor with slight delay for smooth effect
             setTimeout(() => {
-                document.getElementById('instructionBox').style.display = 'block';
-            }, 1000);
+                cursorOutline.style.left = `${posX}px`;
+                cursorOutline.style.top = `${posY}px`;
+            }, 100);
+            
+            // Create mouse trail effect
+            createMouseTrail(posX, posY);
+            
+            // Create particles on mouse move
+            createParticles(posX, posY);
+        });
+        
+        // Mouse trail effect
+        function createMouseTrail(x, y) {
+            const trail = document.createElement('div');
+            trail.className = 'mouse-trail';
+            trail.style.left = `${x}px`;
+            trail.style.top = `${y}px`;
+            document.body.appendChild(trail);
+            
+            // Animate and remove
+            setTimeout(() => {
+                trail.style.opacity = 0;
+                setTimeout(() => {
+                    document.body.removeChild(trail);
+                }, 1000);
+            }, 100);
         }
-
-        function hideMessageBox() {
-            document.getElementById('instructionBox').style.display = 'none';
+        
+        // Particle effect on mouse move
+        function createParticles(x, y) {
+            // Only create particles occasionally to not overload the DOM
+            if (Math.random() > 0.9) {
+                const particle = document.createElement('div');
+                particle.className = 'mouse-particle';
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                
+                // Randomize particle properties
+                const size = Math.random() * 5 + 1;
+                const xMove = (Math.random() - 0.5) * 20;
+                const yMove = (Math.random() - 0.5) * 20;
+                const color = getRandomColor();
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.background = color;
+                
+                document.querySelector('.interactive-area').appendChild(particle);
+                
+                // Animate and remove
+                setTimeout(() => {
+                    particle.style.transform = `translate(${xMove}px, ${yMove}px)`;
+                    particle.style.opacity = 0;
+                    
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 1000);
+                }, 10);
+            }
+        }
+        
+        // Generate random colors for particles
+        function getRandomColor() {
+            const colors = [
+                'rgba(77, 166, 255, 0.7)',
+                'rgba(166, 77, 255, 0.7)',
+                'rgba(77, 255, 195, 0.7)',
+                'rgba(255, 77, 166, 0.7)'
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        // Interactive hover effects
+        const interactiveElements = document.querySelectorAll('.interactive');
+        
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursorOutline.style.width = '60px';
+                cursorOutline.style.height = '60px';
+                cursorOutline.style.borderColor = 'rgba(166, 77, 255, 0.5)';
+                
+                // Create burst effect
+                createBurst(element);
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursorOutline.style.width = '40px';
+                cursorOutline.style.height = '40px';
+                cursorOutline.style.borderColor = 'rgba(77, 166, 255, 0.5)';
+            });
+        });
+        
+        // Burst effect on interactive elements
+        function createBurst(element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            for (let i = 0; i < 10; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'mouse-particle';
+                particle.style.left = `${centerX}px`;
+                particle.style.top = `${centerY}px`;
+                
+                const size = Math.random() * 4 + 2;
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 60 + 20;
+                const xMove = Math.cos(angle) * distance;
+                const yMove = Math.sin(angle) * distance;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.background = getRandomColor();
+                
+                document.querySelector('.interactive-area').appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.style.transform = `translate(${xMove}px, ${yMove}px)`;
+                    particle.style.opacity = 0;
+                    
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 1000);
+                }, 10);
+            }
+        }
+        
+        // Make elements magnetic on hover
+        const magneticElements = document.querySelectorAll('.buy-button, .free-trial-button');
+        
+        magneticElements.forEach(element => {
+            element.addEventListener('mousemove', (e) => {
+                const rect = element.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                const moveX = (e.clientX - centerX) / 10;
+                const moveY = (e.clientY - centerY) / 10;
+                
+                element.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.transform = 'translate(0, 0) scale(1)';
+            });
+        });
+        
+        // Download URLs
+        const RELEASE_DOWNLOAD_URL = "https://upnow-prod.ff45e40d1a1c8f7e7de4e976d0c9e555.r2.cloudflarestorage.com/raKKZPRTv5RYa9gfrmh9MDKDs1z2/4ad2f42d-5998-48f3-90dd-e9ef35a0bf22?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=cdd12e35bbd220303957dc5603a4cc8e%2F20250410%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250410T062916Z&X-Amz-Expires=43200&X-Amz-Signature=7d2f550d9bd098f81dbd1ea6c40331f322d69969c68bf17b0cffffd43f31fc5d&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22Relase.rar%22";
+        const INJECT_DOWNLOAD_URL = "https://upnow-prod.ff45e40d1a1c8f7e7de4e976d0c9e555.r2.cloudflarestorage.com/raKKZPRTv5RYa9gfrmh9MDKDs1z2/60a4a5be-c81a-4e61-864a-3b1d1638417d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=cdd12e35bbd220303957dc5603a4cc8e%2F20250410%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250410T064118Z&X-Amz-Expires=43200&X-Amz-Signature=c4e7f82cb5f20b64ff58a878db5bf1069630893cdac68cc0f6e8f357281e0dee&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22RoeakInjector1.exe%22";
+        
+        // Download button functionality
+        const downloadBtn = document.getElementById('download-btn');
+        const freeTrialBtn = document.getElementById('free-trial-btn');
+        const downloadAnimation = document.querySelector('.download-animation');
+        const progressBar = document.querySelector('.download-progress-bar-animation');
+        const statusText = document.querySelector('.download-status-text');
+        
+        // Free Trial button click handler - will download inject.rar
+        freeTrialBtn.addEventListener('click', () => {
+            startDownload(INJECT_DOWNLOAD_URL, "inje.rar");
+        });
+        
+        // Download button click handler - will download release.rar
+        downloadBtn.addEventListener('click', () => {
+            startDownload(RELEASE_DOWNLOAD_URL, "release.rar");
+        });
+        
+        // Start download process with animation
+        function startDownload(downloadUrl, fileName) {
+            // Show download animation
+            downloadAnimation.classList.add('active');
+            
+            // Reset progress bar
+            progressBar.style.width = '0%';
+            statusText.textContent = "Starting download...";
+            
+            // Simulate download progress
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += Math.random() * 5;
+                
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(progressInterval);
+                    
+                    statusText.textContent = "Download complete! Starting now...";
+                    
+                    // Create actual download link after animation completes
+                    setTimeout(() => {
+                        const link = document.createElement('a');
+                        link.href = downloadUrl;
+                        link.download = fileName;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        // Hide download animation after a brief delay
+                        setTimeout(() => {
+                            downloadAnimation.classList.remove('active');
+                        }, 1000);
+                    }, 500);
+                }
+                
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress < 30) {
+                    statusText.textContent = "Preparing download...";
+                } else if (progress < 60) {
+                    statusText.textContent = "Downloading files...";
+                } else if (progress < 90) {
+                    statusText.textContent = "Almost complete...";
+                }
+            }, 150);
         }
     </script>
 </body>
